@@ -9,7 +9,7 @@ mvn clean test
 ```
 * To run scenarios tagged
 ```
-mvn test -Dcucumber.filter.tags="@tags
+mvn test -Dcucumber.filter.tags="@tags"
 ```
 * - To run scenarios tagged with both `@webForm` and `@apiTests`:
 ```
