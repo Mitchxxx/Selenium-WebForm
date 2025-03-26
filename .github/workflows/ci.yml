@@ -31,12 +31,19 @@ jobs:
       - name: Install Chrome
         run: |
           sudo apt-get update
-          sudo apt-get install -y google-chrome-stable
+          sudo apt-get remove --purge google-chrome-stable || true
+          wget https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_134.0.6998.88-1_amd64.deb
+          sudo dpkg -i google-chrome-stable_134.0.6998.88-1_amd64.deb
+          google-chrome --version
 
+      # Installing Chromedriver matching the installed chrome version
       - name: Install ChromeDriver
         run: |
-            CHROME_VERSION=$(google-chrome --version | awk '{print $3}')
-            sudo apt-get install -y chromium-driver
+            wget https://chromedriver.storage.googleapis.com/134.0.6998.117/chromedriver_linux64.zip
+            unzip chromedriver_linux64.zip
+            sudo mv chromedriver /usr/bin/chromedriver
+            sudo chmod +x /usr/bin/chromedriver
+            chromedriver --version
 
       # Cache Maven Dependencies for faster Builds
       - name: Cache maven Dependencies
