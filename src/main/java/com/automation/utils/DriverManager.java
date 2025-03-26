@@ -15,7 +15,11 @@ public class DriverManager {
         if (driver == null){
             WebDriverManager.chromedriver().setup();
             ChromeOptions options = new ChromeOptions();
-            options.addArguments("--headless", "--disable-gpu");
+            options.addArguments("--headless",
+                    "--disable-gpu",
+                    "--no-sandbox",   // Needed for GitHub Actions
+                    "--user-data-dir=/tmp/chrome-user-data"
+            );
             driver = new ChromeDriver();
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
