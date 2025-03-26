@@ -1,4 +1,4 @@
-@smokeTest
+@webForm
 Feature: Test Selenium Web Form
 
   Scenario Outline: Test Selenium Web form
@@ -13,6 +13,7 @@ Feature: Test Selenium Web Form
     And user clicks "<radioButton>" radio button
     And user chooses "<date>" as date
     Then user clicks the submit button
+    And user verifies form is submitted
 
     Examples:
       | input | password | comment | dropDownOption | city | prePopulated | checkBoxOption | radioButton | date |

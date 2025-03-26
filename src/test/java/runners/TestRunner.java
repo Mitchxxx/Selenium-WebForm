@@ -10,7 +10,7 @@ import org.junit.runner.RunWith;
         glue = "stepdefinitions",
         plugin = {"pretty", "html:target/cucumber-reports.html", "json:target/cucumber.json"},
         monochrome = true,
-        tags = "@smokeTest"
+        tags = "@webForm or @apiTests"
 )
 public class TestRunner {
 }

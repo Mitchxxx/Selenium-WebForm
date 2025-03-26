@@ -9,21 +9,19 @@ import org.openqa.selenium.support.ui.Select;
 
 public class WebFormPage {
         WebDriver driver = DriverManager.getDriver();
-        // Locators for the Web form elements
+        // Locators for the WebForm elements
         public By textInputField = By.id("my-text-id");
+        public By message = By.id("message");
         public By passwordField = By.name("my-password");
         public By textAreaField = By.name("my-textarea");
         public By readOnly = By.name("my-readonly");
         public By disabled = By.name("my-disabled");
-        public By checkbox1 = By.id("my-check-1");
-        public By checkbox2 = By.id("my-check-2");
-        public By radioButton1 = By.id("my-radio-1");
-        public By radioButton2 = By.id("my-radio-2");
         public By select = By.cssSelector("select[name='my-select']");
         public By dataList = By.cssSelector("input[list='my-options']");
         public By submitButton = By.cssSelector("button[type='submit']");
         public By myDate = By.cssSelector("input[name='my-date']");
 
+        // Methods to WebForm page
 
         public void inputText(String text) {
                 driver.findElement(textInputField).sendKeys(text);
@@ -43,6 +41,11 @@ public class WebFormPage {
 
         public void assertReadOnly(String text) {
                 String actualText = driver.findElement(readOnly).getAttribute("value");
+                assert actualText.equals(text);
+        }
+
+        public void assertMessage(String text) {
+                String actualText = driver.findElement(message).getText();
                 assert actualText.equals(text);
         }
 
@@ -76,7 +79,8 @@ public class WebFormPage {
                 datePicker.sendKeys(date);
 
         }
-
-
-
+        public void assertPageTitle(String title) {
+                WebElement pageTitle = driver.findElement(By.tagName("h1"));
+                assert pageTitle.getText().equals(title);
+        }
 }

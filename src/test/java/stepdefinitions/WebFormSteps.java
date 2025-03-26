@@ -73,4 +73,10 @@ public class WebFormSteps {
     public void userChooses(String date) {
         webFormPage.datePicker(date);
     }
+
+    @And("user verifies form is submitted")
+    public void userVerifiesFormIsSubmitted() {
+        webFormPage.assertPageTitle("Form submitted");
+        webFormPage.assertMessage("Received!");
+    }
 }

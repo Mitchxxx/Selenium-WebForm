@@ -16,6 +16,6 @@ public class DriverManagerTest {
         System.out.println("Page title: " + driver.getTitle());
 
         // Close the driver
-       // DriverManager.closeDriver();
+        DriverManager.closeDriver();
     }
 }
