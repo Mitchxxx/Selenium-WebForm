@@ -18,6 +18,7 @@ public class DriverManager {
             options.addArguments(
                     "--headless",
                     "--disable-gpu",
+                    "--disable-dev-shm-usage",
                     "--no-sandbox",   // Needed for GitHub Actions
                     "--user-data-dir=/tmp/chrome-user-data"
             );
