@@ -76,7 +76,7 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: target/cucumber-reports/
+          publish_dir: ./target/cucumber-reports
           publish_branch: gh-pages
         env:
           # Add this to grant write permissions
