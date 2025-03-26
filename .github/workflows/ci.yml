@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - feature/*
   pull_request:
     branches:
       - main
@@ -12,6 +13,10 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
 
     steps:
       # Checkout the repository
@@ -66,3 +71,13 @@ jobs:
         with:
           name: cucumber-reports
           path: target/cucumber-reports/
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: target/cucumber-reports/
+          publish_branch: gh-pages
+        env:
+          # Add this to grant write permissions
+          ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
