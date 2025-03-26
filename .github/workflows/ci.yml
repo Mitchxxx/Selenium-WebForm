@@ -32,14 +32,14 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get remove --purge google-chrome-stable || true
-          wget https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_134.0.6998.88-1_amd64.deb
+          wget https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_134.0.6998.165_amd64.deb
           sudo dpkg -i google-chrome-stable_134.0.6998.88-1_amd64.deb
           google-chrome --version
 
       # Installing Chromedriver matching the installed chrome version
       - name: Install ChromeDriver
         run: |
-            wget https://chromedriver.storage.googleapis.com/134.0.6998.117/chromedriver_linux64.zip
+            wget https://chromedriver.storage.googleapis.com/134.0.6998.165/chromedriver_linux64.zip
             unzip chromedriver_linux64.zip
             sudo mv chromedriver /usr/bin/chromedriver
             sudo chmod +x /usr/bin/chromedriver
