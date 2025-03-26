@@ -4,6 +4,7 @@ import com.automation.utils.DriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 
 
@@ -20,6 +21,7 @@ public class WebFormPage {
         public By dataList = By.cssSelector("input[list='my-options']");
         public By submitButton = By.cssSelector("button[type='submit']");
         public By myDate = By.cssSelector("input[name='my-date']");
+        public By slider = By.cssSelector("input[name='my-range']");
 
         // Methods to WebForm page
 
@@ -82,5 +84,12 @@ public class WebFormPage {
         public void assertPageTitle(String title) {
                 WebElement pageTitle = driver.findElement(By.tagName("h1"));
                 assert pageTitle.getText().equals(title);
+        }
+
+        public void moveSlider (String value) {
+                int position = Integer.parseInt(value);
+                WebElement sliderElement = driver.findElement(slider);
+                Actions actions = new Actions(driver);
+                actions.dragAndDropBy(sliderElement,   position, 0).perform();
         }
 }

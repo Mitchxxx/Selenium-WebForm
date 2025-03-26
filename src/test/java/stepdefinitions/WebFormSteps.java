@@ -79,4 +79,9 @@ public class WebFormSteps {
         webFormPage.assertPageTitle("Form submitted");
         webFormPage.assertMessage("Received!");
     }
+
+    @And("user moves slider to {string}")
+    public void userMovesSliderTo(String arg0) {
+        webFormPage.moveSlider(arg0);
+    }
 }
