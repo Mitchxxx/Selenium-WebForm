@@ -19,3 +19,5 @@ mvn test -Dcucumber.filter.tags="@webForm or @apiTests"
 ```
 mvn test -Dcucumber.filter.tags="not @ignore"
 ```
+
+* To run the test in Github Actions, click on Actions, select the test job and click on Re-Run all Jobs.

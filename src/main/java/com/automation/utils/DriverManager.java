@@ -16,9 +16,9 @@ public class DriverManager {
             WebDriverManager.chromedriver().setup();
             ChromeOptions options = new ChromeOptions();
             options.addArguments(
-                    "--headless",
-                    "--disable-gpu",
-                    "--disable-dev-shm-usage",
+                    "--headless", // Needed for GitHub Actions
+                    "--disable-gpu", // Needed for GitHub Actions
+                    "--disable-dev-shm-usage", // Needed for GitHub Actions
                     "--no-sandbox",   // Needed for GitHub Actions
                     "--user-data-dir=/tmp/chrome-user-data"
             );
