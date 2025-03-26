@@ -38,10 +38,20 @@ public class WebFormPage {
         }
 
         public void submit() {
+                String currentUrl = driver.getCurrentUrl();
                 driver.findElement(submitButton).click();
+                try {
+                        Thread.sleep(2000);
+                } catch (InterruptedException e) {
+                        e.printStackTrace();
+                }
+                String newUrl = driver.getCurrentUrl();
+                assert !currentUrl.equals(newUrl);
+
         }
 
         public void assertReadOnly(String text) {
+
                 String actualText = driver.findElement(readOnly).getAttribute("value");
                 assert actualText.equals(text);
         }
@@ -82,6 +92,7 @@ public class WebFormPage {
 
         }
         public void assertPageTitle(String title) {
+                driver.manage().timeouts().implicitlyWait(5, java.util.concurrent.TimeUnit.SECONDS);
                 WebElement pageTitle = driver.findElement(By.tagName("h1"));
                 assert pageTitle.getText().equals(title);
         }
