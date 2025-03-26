@@ -7,6 +7,8 @@ on:
   pull_request:
     branches:
       - main
+  workflow_dispatch:
+
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -64,3 +66,11 @@ jobs:
         with:
           name: cucumber-reports
           path: target/cucumber-reports/
+
+      - name: Deploy Cucumber Report
+        if: always()  # Upload even if tests fail
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: target/cucumber-html-reports/  # Path to your HTML report
+          publish_branch: gh-pages
